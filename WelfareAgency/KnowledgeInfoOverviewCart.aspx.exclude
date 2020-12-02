@@ -1,0 +1,74 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UUU.master" %>
+
+<script runat="server">
+    //載入刪除購物車頁面，並刪除購物車內容
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        //建立Knowledge物件，並取出欄位資料作使用
+        string K_ID = Request.QueryString["K_ID"];
+        Knowledge Info = new Knowledge();
+
+        string Temp_P_Name = CartUtilty.SendCourseNameToCart(int.Parse(K_ID));
+
+        string Temp_P_Price = CartUtilty.SendCoursePriceToCart(int.Parse(K_ID));
+
+        //---CartItem建立清單---
+        //string E_ID = Request.QueryString["K_ID"];
+        string E_ID = "2";//還沒整合目前先寫死
+
+        Session["E_ID"] = E_ID;
+
+        //判斷Session是否已存在
+        if (Session["Cart"] == null)
+        {
+            Session["Cart"] = new List<Cart>();
+        }
+
+
+        List<Cart> Carts = Session["Cart"] as List<Cart>;
+
+        //Response.Redirect("~/Index.aspx");
+
+        int Quantity = Convert.ToInt32(Session["Quantity"]);
+
+
+
+        bool isFind = false;
+
+        foreach (var item in Carts)
+        {
+            int Temp_P_ID = item.P_ID;
+            if (Convert.ToInt32(K_ID) == item.P_ID)
+            {
+                item.P_Quantity += Quantity;
+                isFind = true;
+            }
+        }
+
+        if (isFind == false)
+        {
+            Carts.Add(
+            new Cart()
+            {
+                P_ID = Convert.ToInt32(K_ID),
+                P_Name = Temp_P_Name,
+                P_Price = Convert.ToInt32(Temp_P_Price),
+                P_Quantity = Quantity,
+                E_ID = Convert.ToInt32(E_ID)
+            });
+        }
+
+
+    }
+</script>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
+
+</asp:Content>

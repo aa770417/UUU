@@ -1,0 +1,211 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UUU.master.cs" Inherits="UUU" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <%--<主板會需要>--%>
+    <title>UUUの福利社</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="UUUの福利社" />
+    <%--放上網站或服務的一些描述"--%>
+    <meta name="keywords" content="美味時光, 休閒時光, 特殊課程, 特別企劃" />
+    <%--可放入一些關鍵字--%>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!--viewport是響應式網頁的語法，很重要-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--IE背後使用edge的引擎呈現畫面-->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet" />
+
+    <!-- Css Styles -->
+    
+    <link href="WelfareAgency/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <link href="docs/fonts/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/css/maps/elegant-icons.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/css/jquery-ui.min.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/css/nice-select.css" rel="stylesheet" />
+    
+    <link href="WelfareAgency/css/slicknav.min.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/css/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="WelfareAgency/style.css" rel="stylesheet" />
+
+    <script src="WelfareAgency/Scripts/ckeditor/ckeditor.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<%--<body style="font-size:62.5%;">--%>
+<body style="font-size: 100%;">
+    <form id="form1" runat="server">
+        <div>
+            <!-- Page Preloder 主板會需要 -->
+            <%--            <div id="preloder">
+                <div class="loader"></div>
+            </div>--%>
+            <!-- Header Section Begin -->
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="header__top__left">
+                            <div class="col-auto" style="font-size: 5Em; vertical-align: middle">
+                                <i class="fa fa-star-half-o" aria-hidden="true">歡迎光臨 UUUの福利社 </i>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col align-self-end">
+                            <ul class="nav" style="font-size: 2Em">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="K_Index.aspx" target="_blank">福利社首頁</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" target="_blank">美味時光</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" target="_blank">休閒時光</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="KnowledgeInfoOverview.aspx" target="_blank">特約課程</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" target="_blank">特別企劃</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="CartList.aspx" target="_blank">購物車</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="OrdersList.aspx" target="_blank">我的訂單</a>
+                                </li>
+
+
+                                <%--                                <asp:Panel ID="Panel1" runat="server">
+                                    <li id="Management" class="nav-link active">
+                                        <a class="nav-link active" href="KnowledgeInfoManage.aspx" target="_blank">管理權限</a>
+                                    </li>
+                                </asp:Panel>--%>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+            <!-- Header Section End -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Footer Section Begin -->
+            <footer class="footer spad">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer__about">
+                                <div class="footer__about__logo">
+                                    <i class="fa fa-star-half-o" aria-hidden="true">UUUの福利社</i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <ul>
+                                    <li>通訊地址: 60-49 Road 11378</li>
+                                    <li>通訊電話: +65 11.188.888</li>
+                                    <li>Email: hello@colorlib.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                            <div class="footer__widget">
+                                <h6>Useful Links</h6>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">About Our Shop</a></li>
+                                    <li><a href="#">Secure Shopping</a></li>
+                                    <li><a href="#">Delivery infomation</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Our Sitemap</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">Who We Are</a></li>
+                                    <li><a href="#">Our Services</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Innovation</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="footer__widget">
+                                <h6>Join Our Newsletter Now</h6>
+                                <p>Get E-mail updates about our latest shop and special offers.</p>
+                                <input type="text" placeholder="Enter your mail" />
+                                <button type="submit" class="site-btn">Subscribe</button>
+                                <div class="footer__widget__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer__copyright">
+                                <div class="footer__copyright__text">
+                                    <p>
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script>
+                                        All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i>by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    </p>
+                                </div>
+                                <div class="footer__copyright__payment">
+                                    <img src="img/payment-item.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer Section End -->
+            <!-- Js Plugins -->
+            <script src="WelfareAgency/packages/jQuery.3.5.1/Content/Scripts/jquery-3.5.1.js"></script>
+          
+            <script src="WelfareAgency/js/jquery-ui.min.js"></script>      
+          
+            <script src="WelfareAgency/Scripts/bootstrap.js"></script>
+
+            <script src="WelfareAgency/Content/bootstrap/bootstrap-datepicker.js"></script>
+
+            <script src="WelfareAgency/Content/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+
+<%--            <script src="WelfareAgency/Scripts/jquery-ui.js"></script>--%>
+
+            <script src="WelfareAgency/js/jquery.nice-select.min.js"></script>
+
+            <script src="WelfareAgency/js/jquery.slicknav.js"></script>
+
+            <script src="WelfareAgency/js/mixitup.min.js"></script>
+
+            <script src="WelfareAgency/js/owl.carousel.min.js"></script>
+
+            <script src="WelfareAgency/js/main.js"></script>
+
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

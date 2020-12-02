@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Context" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClockInOutRecord">
+          <Key>
+            <PropertyRef Name="CIORID" />
+          </Key>
+          <Property Name="CIORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClockIn" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClockOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passed" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClubName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="Img" Type="nvarchar(max)" />
+          <Property Name="Members" Type="int" />
+        </EntityType>
+        <EntityType Name="ClubMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClubID" Type="int" Nullable="false" />
+          <Property Name="Club" Type="nvarchar" MaxLength="50" />
+          <Property Name="EID" Type="int" />
+          <Property Name="Name" Type="nchar" MaxLength="30" />
+          <Property Name="DeptID" Type="int" />
+          <Property Name="DeptName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="Approval" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorizationLevel" Type="nvarchar" MaxLength="50" />
+          <Property Name="HireStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="HiredDate" Type="date" />
+          <Property Name="ResignedDate" Type="date" />
+          <Property Name="Salary" Type="int" Nullable="false" />
+          <Property Name="ImageFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceYear" Type="nvarchar" MaxLength="50" />
+          <Property Name="Relationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Other1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Other2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="TypeOfLeave" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeStart" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeOff" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hour" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="300" />
+          <Property Name="ProofImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passed" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MeetingRoomBookingRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="StartDateTime" Type="datetime" />
+          <Property Name="EndDateTime" Type="datetime" />
+          <Property Name="MeetingRecordPath" Type="nvarchar(max)" />
+          <Property Name="Note1" Type="int" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PayrollCalculation">
+          <Key>
+            <PropertyRef Name="PayrollCalculationID" />
+          </Key>
+          <Property Name="PayrollCalculationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="YearMonth" Type="nvarchar" MaxLength="50" />
+          <Property Name="CalculatedSalary" Type="int" />
+          <Property Name="SalaryBonus" Type="int" />
+          <Property Name="PerfectAttendance" Type="int" />
+          <Property Name="TravelSubsidy" Type="int" />
+          <Property Name="SalaryTotal" Type="int" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="PerformanceID" />
+          </Key>
+          <Property Name="PerformanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="300" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SpecialPlan">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_Vendor" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_Price" Type="money" />
+          <Property Name="S_Stock" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_ImgInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_DetailInfo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TomOrders">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="EID" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="InDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="NormalShip" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColdShip" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeepFrozenShip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Total" Type="int" />
+          <Property Name="remark1" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WorkMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SendTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="HaveRead" Type="nvarchar" MaxLength="50" />
+          <Property Name="SenderDID" Type="int" />
+          <Property Name="SenderEID" Type="int" />
+          <Property Name="RecipientDID" Type="int" />
+          <Property Name="RecipientEID" Type="int" />
+          <Property Name="MessageSubject" Type="nvarchar(max)" />
+          <Property Name="MessageContent" Type="nvarchar(max)" />
+          <Property Name="ReMessage" Type="nvarchar(max)" />
+          <Property Name="MessageAttachment" Type="nvarchar" MaxLength="100" />
+          <Property Name="Note1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note3" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WorkShiftRecords">
+          <Key>
+            <PropertyRef Name="WorkShiftRecordId" />
+          </Key>
+          <Property Name="WorkShiftRecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="WorkDate" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\PUBLIC\UUUSHIP\UUU整合版\UUULOGISTIC\UUULOGISTIC\APP_DATA\DB.MDF.dbo.WorkShiftRecordsDepIdView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WorkShiftRecordsDepIdView">
+          <Key>
+            <PropertyRef Name="WorkShiftRecordId" />
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="WorkDate" />
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="WorkShiftRecordId" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="WorkDate" Type="date" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBStoreContainer">
+          <EntitySet Name="Board" EntityType="Self.Board" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClockInOutRecord" EntityType="Self.ClockInOutRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClubMember" EntityType="Self.ClubMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingRoomBookingRecords" EntityType="Self.MeetingRoomBookingRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollCalculation" EntityType="Self.PayrollCalculation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Performance" EntityType="Self.Performance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialPlan" EntityType="Self.SpecialPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TomOrders" EntityType="Self.TomOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkMessage" EntityType="Self.WorkMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShiftRecords" EntityType="Self.WorkShiftRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkShiftRecordsDepIdView" EntityType="Self.WorkShiftRecordsDepIdView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WorkShiftRecordsDepIdView].[WorkShiftRecordId] AS [WorkShiftRecordId], 
+    [WorkShiftRecordsDepIdView].[EmployeeID] AS [EmployeeID], 
+    [WorkShiftRecordsDepIdView].[WorkDate] AS [WorkDate], 
+    [WorkShiftRecordsDepIdView].[DepartmentID] AS [DepartmentID]
+    FROM [dbo].[WorkShiftRecordsDepIdView] AS [WorkShiftRecordsDepIdView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClubName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Members" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ClubMember">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClubID" Type="Int32" Nullable="false" />
+          <Property Name="Club" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="DeptID" Type="Int32" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Approval" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizationLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HireStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HiredDate" Type="DateTime" Precision="0" />
+          <Property Name="ResignedDate" Type="DateTime" Precision="0" />
+          <Property Name="Salary" Type="Int32" Nullable="false" />
+          <Property Name="ImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Other1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Other2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MeetingRoomBookingRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+          <Property Name="MeetingRecordPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note1" Type="Int32" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WorkShiftRecord">
+          <Key>
+            <PropertyRef Name="WorkShiftRecordId" />
+          </Key>
+          <Property Name="WorkShiftRecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="WorkDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="WorkShiftRecordsDepIdView">
+          <Key>
+            <PropertyRef Name="WorkShiftRecordId" />
+            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="WorkDate" />
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="WorkShiftRecordId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="WorkDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clubs" EntityType="Self.Club" />
+          <EntitySet Name="ClubMembers" EntityType="Self.ClubMember" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="MeetingRoomBookingRecords" EntityType="Self.MeetingRoomBookingRecord" />
+          <EntitySet Name="WorkShiftRecords" EntityType="Self.WorkShiftRecord" />
+          <EntitySet Name="WorkShiftRecordsDepIdViews" EntityType="Self.WorkShiftRecordsDepIdView" />
+          <EntitySet Name="Boards" EntityType="DB.Board" />
+          <EntitySet Name="ClockInOutRecords" EntityType="DB.ClockInOutRecord" />
+          <EntitySet Name="Leaves" EntityType="DB.Leave" />
+          <EntitySet Name="PayrollCalculations" EntityType="DB.PayrollCalculation" />
+          <EntitySet Name="Performances" EntityType="DB.Performance" />
+          <EntitySet Name="SpecialPlans" EntityType="DB.SpecialPlan" />
+          <EntitySet Name="TomOrders" EntityType="DB.TomOrder" />
+          <EntitySet Name="WorkMessages" EntityType="DB.WorkMessage" />
+        </EntityContainer>
+        <EntityType Name="Board">
+          <Key>
+            <PropertyRef Name="BID" />
+          </Key>
+          <Property Name="BID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remark2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ClockInOutRecord">
+          <Key>
+            <PropertyRef Name="CIORID" />
+          </Key>
+          <Property Name="CIORID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClockIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClockOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="TypeOfLeave" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStart" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeOff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hour" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ProofImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PayrollCalculation">
+          <Key>
+            <PropertyRef Name="PayrollCalculationID" />
+          </Key>
+          <Property Name="PayrollCalculationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="YearMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CalculatedSalary" Type="Int32" />
+          <Property Name="SalaryBonus" Type="Int32" />
+          <Property Name="PerfectAttendance" Type="Int32" />
+          <Property Name="TravelSubsidy" Type="Int32" />
+          <Property Name="SalaryTotal" Type="Int32" />
+          <Property Name="Note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="PerformanceID" />
+          </Key>
+          <Property Name="PerformanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Grade" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SpecialPlan">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="S_Stock" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_ImgInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_DetailInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TomOrder">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="EID" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NormalShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColdShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeepFrozenShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="remark1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WorkMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SendTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HaveRead" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SenderDID" Type="Int32" />
+          <Property Name="SenderEID" Type="Int32" />
+          <Property Name="RecipientDID" Type="Int32" />
+          <Property Name="RecipientEID" Type="Int32" />
+          <Property Name="MessageSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageAttachment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Clubs">
+            <EntityTypeMapping TypeName="DB.Club">
+              <MappingFragment StoreEntitySet="Club">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClubName" ColumnName="ClubName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Members" ColumnName="Members" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubMembers">
+            <EntityTypeMapping TypeName="DB.ClubMember">
+              <MappingFragment StoreEntitySet="ClubMember">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+                <ScalarProperty Name="Club" ColumnName="Club" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Approval" ColumnName="Approval" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="AuthorizationLevel" ColumnName="AuthorizationLevel" />
+                <ScalarProperty Name="HireStatus" ColumnName="HireStatus" />
+                <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+                <ScalarProperty Name="ResignedDate" ColumnName="ResignedDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="ServiceYear" ColumnName="ServiceYear" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="Other1" ColumnName="Other1" />
+                <ScalarProperty Name="Other2" ColumnName="Other2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingRoomBookingRecords">
+            <EntityTypeMapping TypeName="DB.MeetingRoomBookingRecord">
+              <MappingFragment StoreEntitySet="MeetingRoomBookingRecords">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="MeetingRecordPath" ColumnName="MeetingRecordPath" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShiftRecords">
+            <EntityTypeMapping TypeName="DB.WorkShiftRecord">
+              <MappingFragment StoreEntitySet="WorkShiftRecords">
+                <ScalarProperty Name="WorkShiftRecordId" ColumnName="WorkShiftRecordId" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkShiftRecordsDepIdViews">
+            <EntityTypeMapping TypeName="DB.WorkShiftRecordsDepIdView">
+              <MappingFragment StoreEntitySet="WorkShiftRecordsDepIdView">
+                <ScalarProperty Name="WorkShiftRecordId" ColumnName="WorkShiftRecordId" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boards">
+            <EntityTypeMapping TypeName="DB.Board">
+              <MappingFragment StoreEntitySet="Board">
+                <ScalarProperty Name="Remark2" ColumnName="Remark2" />
+                <ScalarProperty Name="Remark1" ColumnName="Remark1" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="BID" ColumnName="BID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClockInOutRecords">
+            <EntityTypeMapping TypeName="DB.ClockInOutRecord">
+              <MappingFragment StoreEntitySet="ClockInOutRecord">
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Passed" ColumnName="Passed" />
+                <ScalarProperty Name="ClockOut" ColumnName="ClockOut" />
+                <ScalarProperty Name="ClockIn" ColumnName="ClockIn" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CIORID" ColumnName="CIORID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="DB.Leave">
+              <MappingFragment StoreEntitySet="Leave">
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Passed" ColumnName="Passed" />
+                <ScalarProperty Name="ProofImg" ColumnName="ProofImg" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="TimeOff" ColumnName="TimeOff" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TypeOfLeave" ColumnName="TypeOfLeave" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollCalculations">
+            <EntityTypeMapping TypeName="DB.PayrollCalculation">
+              <MappingFragment StoreEntitySet="PayrollCalculation">
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="SalaryTotal" ColumnName="SalaryTotal" />
+                <ScalarProperty Name="TravelSubsidy" ColumnName="TravelSubsidy" />
+                <ScalarProperty Name="PerfectAttendance" ColumnName="PerfectAttendance" />
+                <ScalarProperty Name="SalaryBonus" ColumnName="SalaryBonus" />
+                <ScalarProperty Name="CalculatedSalary" ColumnName="CalculatedSalary" />
+                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PayrollCalculationID" ColumnName="PayrollCalculationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Performances">
+            <EntityTypeMapping TypeName="DB.Performance">
+              <MappingFragment StoreEntitySet="Performance">
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PerformanceID" ColumnName="PerformanceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecialPlans">
+            <EntityTypeMapping TypeName="DB.SpecialPlan">
+              <MappingFragment StoreEntitySet="SpecialPlan">
+                <ScalarProperty Name="S_DetailInfo" ColumnName="S_DetailInfo" />
+                <ScalarProperty Name="S_ImgInfo" ColumnName="S_ImgInfo" />
+                <ScalarProperty Name="S_Stock" ColumnName="S_Stock" />
+                <ScalarProperty Name="S_Price" ColumnName="S_Price" />
+                <ScalarProperty Name="S_Vendor" ColumnName="S_Vendor" />
+                <ScalarProperty Name="S_Category" ColumnName="S_Category" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TomOrders">
+            <EntityTypeMapping TypeName="DB.TomOrder">
+              <MappingFragment StoreEntitySet="TomOrders">
+                <ScalarProperty Name="remark2" ColumnName="remark2" />
+                <ScalarProperty Name="remark1" ColumnName="remark1" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DeepFrozenShip" ColumnName="DeepFrozenShip" />
+                <ScalarProperty Name="ColdShip" ColumnName="ColdShip" />
+                <ScalarProperty Name="NormalShip" ColumnName="NormalShip" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkMessages">
+            <EntityTypeMapping TypeName="DB.WorkMessage">
+              <MappingFragment StoreEntitySet="WorkMessage">
+                <ScalarProperty Name="Note3" ColumnName="Note3" />
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="MessageAttachment" ColumnName="MessageAttachment" />
+                <ScalarProperty Name="ReMessage" ColumnName="ReMessage" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+                <ScalarProperty Name="RecipientEID" ColumnName="RecipientEID" />
+                <ScalarProperty Name="RecipientDID" ColumnName="RecipientDID" />
+                <ScalarProperty Name="SenderEID" ColumnName="SenderEID" />
+                <ScalarProperty Name="SenderDID" ColumnName="SenderDID" />
+                <ScalarProperty Name="HaveRead" ColumnName="HaveRead" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
