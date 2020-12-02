@@ -10,7 +10,7 @@
         }
 
     }
-    // this is query button // for me
+    // this is query button // for me2
     protected void Button1_Click(object sender, EventArgs e)
     {
         Repeater1.DataSource = Order.FindOrder(TextBox1.Text);
